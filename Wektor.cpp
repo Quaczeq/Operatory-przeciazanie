@@ -1,8 +1,8 @@
 #include "Wektor.h"
 using namespace std;
-Wektor::Wektor(int rozmiar) {
-	this->rozmiar = rozmiar;
-	wspolrzedne = new float[rozmiar];
+Wektor::Wektor(int r) {
+	this->rozmiar = r;
+	wspolrzedne = new float[r];
 }
 Wektor::Wektor(const Wektor & w) {//definicja konstruktora kopiujacego
 	wspolrzedne = new float[rozmiar = w.rozmiar];//utworzenie tablicy dynamicznej o rzmiarze jak w w 
