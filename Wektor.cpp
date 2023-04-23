@@ -1,8 +1,8 @@
 #include "Wektor.h"
 using namespace std;
-Wektor::Wektor(int rozmiar) {
-	this->rozmiar = rozmiar;
-	wspolrzedne = new float[rozmiar];
+Wektor::Wektor(int r) {
+	this->rozmiar = r;
+	wspolrzedne = new float[r];
 }
 Wektor::Wektor(const Wektor & w) {//definicja konstruktora kopiujacego
 	wspolrzedne = new float[rozmiar = w.rozmiar];//utworzenie tablicy dynamicznej o rzmiarze jak w w 
@@ -23,11 +23,46 @@ Wektor& Wektor::operator+(const Wektor & w) {//operator+ jako metoda
 	return *tmp;
 }
 
-void  Wektor::operator+=(const Wektor& w) {//operator+ jako metoda 
+Wektor& Wektor::operator-(const Wektor& w) {
+    int r = rozmiar < w.rozmiar ? w.rozmiar : rozmiar;
+    Wektor* tmp = new Wektor(r);
+    for (int i = 0; i < r; i++) {
+        tmp->wspolrzedne[i] = wspolrzedne[i] - w.wspolrzedne[i];
+    }
+    return *tmp;
+}
+
+void Wektor::operator+=(const Wektor& w) {//operator+ jako metoda 
 	int r = rozmiar < w.rozmiar ? rozmiar : w.rozmiar;
 	for (int i = 0; i < r; i++) {
 		wspolrzedne[i] += w.wspolrzedne[i];
 	}
+}
+
+void Wektor::operator-=(const Wektor& w) {//operator+ jako metoda 
+	int r = rozmiar < w.rozmiar ? rozmiar : w.rozmiar;
+	for (int i = 0; i < r; i++) {
+		wspolrzedne[i] -= w.wspolrzedne[i];
+	}
+}
+
+Wektor& Wektor::operator*(const float& skalar) {
+	int r = rozmiar;
+    Wektor* tmp = new Wektor(r);
+    for (int i = 0; i < r; i++) {
+        tmp->wspolrzedne[i] = wspolrzedne[i] * skalar;
+    }
+    return *tmp;
+}
+
+Wektor& Wektor::operator/(const float& skalar) {
+	if (skalar == 0) throw runtime_error ("Nie dzielimy przez 0!");
+	int r = rozmiar;
+    Wektor* tmp = new Wektor(r);
+    for (int i = 0; i < r; i++) {
+        tmp->wspolrzedne[i] = wspolrzedne[i] / skalar;
+    }
+    return *tmp;
 }
 
 Wektor& Wektor::operator =(const Wektor & w) {
@@ -54,4 +89,16 @@ ostream & operator<<(ostream & o, const Wektor & w){
 	for (int i = 0; i < w.rozmiar; i++)
 		o << w.wspolrzedne[i] << " ";
 	return o;
+}
+
+istream & operator>>(istream & is, const Wektor & w) {
+	for (int i = 0; i < w.rozmiar; i++) {
+	is >> w.wspolrzedne[i];
+	}
+	return is;
+}
+
+float& Wektor::operator[](int index) {
+if (index >= rozmiar) throw out_of_range("Index out of range!");
+return wspolrzedne[index];
 }
