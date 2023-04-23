@@ -6,6 +6,7 @@
 #include<iostream>
 class Wektor {
 	friend std::ostream & operator<<(std::ostream &, const Wektor &);
+	friend std::istream & operator>>(std::istream &, const Wektor &);
 	float * wspolrzedne{};
 	int rozmiar{};
 public:
@@ -21,5 +22,6 @@ public:
 	Wektor& operator/(const float&);
 	Wektor& operator =(const Wektor&);
 	Wektor& operator-(const Wektor &);
+	float& operator[](int);
     void wpisz();
 };

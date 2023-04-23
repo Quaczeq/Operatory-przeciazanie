@@ -27,7 +27,19 @@ int main() {
 	catch (runtime_error & e){
 		cout << endl << "Blad " << e.what() << endl;
 	}
-	system("pause");
 
+//Przeciazenie operatora []
+	try {
+		cout << endl << a[1] << endl;
+	}
+	catch (out_of_range & e) {
+		cout << "Blad" << e.what() << endl;
+	}
+
+//Przeciazenie operatora >>
+	cout << endl << "Podaj wartosci wektora a (3): ";
+	cin >> a;
+	cout << a;
+	system("pause");
 }
 

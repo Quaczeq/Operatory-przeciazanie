@@ -90,3 +90,15 @@ ostream & operator<<(ostream & o, const Wektor & w){
 		o << w.wspolrzedne[i] << " ";
 	return o;
 }
+
+istream & operator>>(istream & is, const Wektor & w) {
+	for (int i = 0; i < w.rozmiar; i++) {
+	is >> w.wspolrzedne[i];
+	}
+	return is;
+}
+
+float& Wektor::operator[](int index) {
+if (index >= rozmiar) throw out_of_range("Index out of range!");
+return wspolrzedne[index];
+}
