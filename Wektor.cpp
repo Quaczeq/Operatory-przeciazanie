@@ -32,18 +32,37 @@ Wektor& Wektor::operator-(const Wektor& w) {
     return *tmp;
 }
 
-void  Wektor::operator+=(const Wektor& w) {//operator+ jako metoda 
+void Wektor::operator+=(const Wektor& w) {//operator+ jako metoda 
 	int r = rozmiar < w.rozmiar ? rozmiar : w.rozmiar;
 	for (int i = 0; i < r; i++) {
 		wspolrzedne[i] += w.wspolrzedne[i];
 	}
 }
 
-void  Wektor::operator-=(const Wektor& w) {//operator+ jako metoda 
+void Wektor::operator-=(const Wektor& w) {//operator+ jako metoda 
 	int r = rozmiar < w.rozmiar ? rozmiar : w.rozmiar;
 	for (int i = 0; i < r; i++) {
 		wspolrzedne[i] -= w.wspolrzedne[i];
 	}
+}
+
+Wektor& Wektor::operator*(const float& skalar) {
+	int r = rozmiar;
+    Wektor* tmp = new Wektor(r);
+    for (int i = 0; i < r; i++) {
+        tmp->wspolrzedne[i] = wspolrzedne[i] * skalar;
+    }
+    return *tmp;
+}
+
+Wektor& Wektor::operator/(const float& skalar) {
+	if (skalar == 0) throw runtime_error ("Nie dzielimy przez 0!");
+	int r = rozmiar;
+    Wektor* tmp = new Wektor(r);
+    for (int i = 0; i < r; i++) {
+        tmp->wspolrzedne[i] = wspolrzedne[i] / skalar;
+    }
+    return *tmp;
 }
 
 Wektor& Wektor::operator =(const Wektor & w) {
