@@ -8,13 +8,12 @@ int main() {
 	Wektor a(3), b(2);
 	a.wpisz();
 	b.wpisz();
-
-	Wektor a2(3), b2(2);
-	a2.wpisz();
-	b2.wpisz();
 	
     Wektor c = a - b;
 	cout << endl << "c: " << c;
+	c -= b;
+	cout << endl << "(c-=b) c : " << c;
+
 	system("pause");
 }
 

@@ -15,6 +15,7 @@ public:
 	~Wektor();
 	Wektor& operator+(const Wektor &);
 	void operator+=(const Wektor&);
+	void operator-=(const Wektor&);
 	Wektor& operator =(const Wektor &);
 	Wektor& operator-(const Wektor &);
 	void wpisz();

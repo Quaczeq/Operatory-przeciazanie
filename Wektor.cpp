@@ -24,7 +24,7 @@ Wektor& Wektor::operator+(const Wektor & w) {//operator+ jako metoda
 }
 
 Wektor& Wektor::operator-(const Wektor& w) {
-    int r = rozmiar < w.rozmiar ? rozmiar : w.rozmiar;
+    int r = rozmiar < w.rozmiar ? w.rozmiar : rozmiar;
     Wektor* tmp = new Wektor(r);
     for (int i = 0; i < r; i++) {
         tmp->wspolrzedne[i] = wspolrzedne[i] - w.wspolrzedne[i];
@@ -36,6 +36,13 @@ void  Wektor::operator+=(const Wektor& w) {//operator+ jako metoda
 	int r = rozmiar < w.rozmiar ? rozmiar : w.rozmiar;
 	for (int i = 0; i < r; i++) {
 		wspolrzedne[i] += w.wspolrzedne[i];
+	}
+}
+
+void  Wektor::operator-=(const Wektor& w) {//operator+ jako metoda 
+	int r = rozmiar < w.rozmiar ? rozmiar : w.rozmiar;
+	for (int i = 0; i < r; i++) {
+		wspolrzedne[i] -= w.wspolrzedne[i];
 	}
 }
 
