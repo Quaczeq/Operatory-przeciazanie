@@ -1,7 +1,5 @@
 #pragma once
 
-//E. Figielska, Metody programowania, 2019
-//Edit: M. Klak, 2023
 
 #include<iostream>
 class Wektor {

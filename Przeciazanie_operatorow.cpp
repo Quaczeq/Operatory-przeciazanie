@@ -6,7 +6,7 @@
 using namespace std;
 
 int main() {
-	Wektor a(3), b(2);
+	Wektor a(4), b(3);
 	a.wpisz();
 	b.wpisz();
 
@@ -37,9 +37,9 @@ int main() {
 	}
 
 //Przeciazenie operatora >>
-	cout << endl << "Podaj wartosci wektora a (3): ";
+	cout << endl << "Podaj wartosci wektora a: " << a << endl;
 	cin >> a;
-	cout << a;
+	cout << "Nowy wektor a: " << a;
 	system("pause");
 }
 
